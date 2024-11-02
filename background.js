@@ -14,7 +14,7 @@ function performAction(tab, option) {
           chrome.downloads.download({ url: toDownload });
       }
       else {
-        alert("No image found or invalid response");
+        window.alert("No image found or invalid response");
       }
     });
   }
