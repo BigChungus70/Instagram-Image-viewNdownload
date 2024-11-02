@@ -15,6 +15,14 @@ function performAction(tab, option) {
         //downloads the image
           const toDownload = response.imageSource;
           chrome.downloads.download({ url: toDownload });
+      /*
+           you can add specific directory to download to but it has to be within the default Downloads directory
+           first create the folder inside Downloads folder, example: Downloads/Silly Cars 
+           change the code to this
+           chrome.downloads.download({ url: toDownload , filename: "Silly Cars/" + Date.now() + ".jpg", saveAs: true });
+
+           or leave it as is to download directly to Downloads
+      */
       }
       else {
         console.alert("No image found or invalid response");
