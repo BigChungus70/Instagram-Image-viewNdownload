@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Instagram Image Viewer and Downloader",
+  "version": "1.0",
+  "description": "View the current Instagram image in a new tab or download it",
+  "permissions": ["activeTab", "scripting", "downloads"],
+  "host_permissions": ["https://www.instagram.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "open_image": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X",
+        "mac": "Command+Shift+X",
+        "linux": "Ctrl+Shift+X"
+      },
+      "description": "Open current image"
+    },
+    "download_image": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Z",
+        "mac": "Command+Shift+Z",
+        "linux": "Ctrl+Shift+Z"
+      },
+      "description": "Download current image"
+    }
+  },
+"action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "waq.png",
+      "48": "waq.png",
+      "128": "waq.png"
+    }
+  },
+  "icons": {
+    "16": "waq.png",
+    "48": "waq.png",
+    "128": "waq.png"
+  }
+}
