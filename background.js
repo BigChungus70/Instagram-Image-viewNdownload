@@ -5,6 +5,9 @@ console.log("have full access to the silliest of cats pics!");
 function performAction(tab, option) {
   if (tab.url.includes("instagram.com")) {
     chrome.tabs.sendMessage(tab.id, { action: "getImageSource" }, (response) => {
+    if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError);
+    }
         //opens the image in a new tab
     if (response && response.imageSource && option === 1) {
         chrome.tabs.create({ url: response.imageSource });
@@ -14,7 +17,7 @@ function performAction(tab, option) {
           chrome.downloads.download({ url: toDownload });
       }
       else {
-        window.alert("No image found or invalid response");
+        console.alert("No image found or invalid response");
       }
     });
   }
