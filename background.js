@@ -18,10 +18,17 @@ function performAction(tab, option) {
       /*
            you can add specific directory to download to but it has to be within the default Downloads directory
            first create the folder inside Downloads folder, example: Downloads/Silly Cars 
-           change the code to this
-           chrome.downloads.download({ url: toDownload , filename: "Silly Cars/" + Date.now() + ".jpg", saveAs: true });
+           change the line 17 to this:
+           
+          const date = new Date();
+          const filename = `Silly Cars/${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}@${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}.jpg`;
+          chrome.downloads.download({ url: toDownload, filename, saveAs: true });
 
-           or leave it as is to download directly to Downloads
+
+           or leave it as is to download directly to default Downloads folder
+           #NOTE#
+           changing the directory will cause the saving dialog to always download at the new directory after using this extension (makes it default)
+           until you change it again 
       */
       }
       else {
